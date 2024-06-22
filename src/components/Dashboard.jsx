@@ -1,10 +1,12 @@
 // src/components/Dashboard.js
+
 import React, { useState, useEffect, useContext } from 'react';
 import { createFolder, getFolders, uploadImage, searchImages } from '../api';
 import AuthContext from './context/AuthContext';
 import FolderTree from './FolderTree';
 import ImageUpload from './ImageUpload';
 import Search from './Search';
+import './Dashboard.css'; // Import your custom styles
 
 const Dashboard = () => {
   const [folders, setFolders] = useState([]);
@@ -53,8 +55,8 @@ const Dashboard = () => {
 
   return (
     <div className="container">
-      <button onClick={logout}>Logout</button>
-      <h2>Dashboard</h2>
+      <button onClick={logout} className="logout-btn">Logout</button>
+      <h2 className="dashboard-title">Dashboard</h2>
       <FolderTree folders={folders} onCreateFolder={handleCreateFolder} />
       <ImageUpload onUpload={handleUploadImage} />
       <Search onSearch={handleSearch} />

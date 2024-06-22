@@ -2,11 +2,12 @@
 import React, { useState, useContext } from 'react';
 import AuthContext from './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import './Login.css'; // Import your custom styles
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const { login } = useContext(AuthContext);
-  const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,11 +25,17 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} value={formData.email} required />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} value={formData.password} required />
+        <div className="input-group">
+          <label>Email:</label>
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} value={formData.email} required />
+        </div>
+        <div className="input-group">
+          <label>Password:</label>
+          <input type="password" name="password" placeholder="Password" onChange={handleChange} value={formData.password} required />
+        </div>
         <button type="submit">Login</button>
       </form>
     </div>
